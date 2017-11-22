@@ -24,7 +24,7 @@
 refractorStorage();
 injectInterface();
 
-if (window.location.href.match("(.steamgifts.com/discussion/)|(.steamgifts.com/giveaway/)") !== null && confirmAuthor()) {
+if (window.location.href.match("(\.steamgifts\.com/discussion/)|(\.steamgifts\.com/giveaway/)") !== null && confirmAuthor()) {
 	var apiKey = localStorage.getItem('APIKey');
 	var steamID64 = localStorage.getItem('SteamID64');
 	var bStoreMethod = localStorage.getItem('RCE-StoreMethod');

@@ -2,7 +2,7 @@
 // @name		 RaChart™ Enhancer
 // @author       Sighery
 // @description  Enhances Rachel's charts in SG by highlighting you the games you own already
-// @version	     0.30.3
+// @version	     0.30.4
 // @icon		 http://www.sighery.com/favicon.ico
 // @downloadURL  https://github.com/Sighery/RaChart/raw/master/RaChart%20Enhancer/RaChartEnhancer.user.js
 // @updateURL	 https://github.com/Sighery/RaChart/raw/master/RaChart%20Enhancer/RaChartEnhancer.meta.js
@@ -24,7 +24,7 @@
 refractorStorage();
 injectInterface();
 
-if ((window.location.href.match(".steamgifts.com/discussion/") || window.location.href.match(".steamgifts.com/giveaway/")) !== null && confirmAuthor()) {
+if (window.location.href.match("(.steamgifts.com/discussion/)|(.steamgifts.com/giveaway/)") !== null && confirmAuthor()) {
 	var apiKey = localStorage.getItem('APIKey');
 	var steamID64 = localStorage.getItem('SteamID64');
 	var bStoreMethod = localStorage.getItem('RCE-StoreMethod');
@@ -381,11 +381,11 @@ function confirmAuthor() {
 
 
 function confirmRow(row) {
-	if (row.children.length != 1) {
+	if (row.children.length < 1) {
 		return false;
 	} if (row.getElementsByTagName("A").length < 1) {
 		return false;
-	} if (/store\.steampowered\.com/.test(row.getElementsByTagName("A")[0].href) === false) {
+	} if (/(store\.steampowered\.com)|(steamdb\.info)/.test(row.getElementsByTagName("A")[0].href) === false) {
 		return false;
 	}
 
